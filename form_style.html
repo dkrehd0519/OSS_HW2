@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        display: flex;
+        justify-content: center;
+      }
+      .container {
+        max-width: 960px;
+        display: flex;
+        flex-direction: column;
+      }
+      .top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 48px 0px;
+      }
+      .top h2 {
+        font-size: 30px;
+        margin: 0;
+        margin-bottom: 8px;
+      }
+      p {
+        font-size: 20px;
+        margin: 0;
+        margin-bottom: 16px;
+      }
+      .rightContainer {
+        display: flex;
+        flex-direction: column;
+      }
+      h4 {
+        font-size: 23px;
+        margin: 0;
+        margin-bottom: 16px;
+        margin-left: 8px;
+      }
+      .nameContainer {
+        display: flex;
+      }
+      .nameContainer input {
+        width: 268px;
+        height: 22px;
+        padding: 6px 12px;
+        border-radius: 0.375rem;
+        border: 1px solid #ced4da;
+      }
+      .formBox {
+        display: flex;
+        flex-direction: column;
+        padding: 0 8px;
+        font-size: 16px;
+      }
+      .labeltext {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+      .longInput {
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        width: 590px;
+        margin-bottom: 8px;
+      }
+      .UserNameSpan {
+        border: 1px solid #ced4da;
+        display: flex;
+        align-items: center;
+        padding: 0.375rem 0.75rem;
+        width: 14px;
+        font-size: 1rem;
+        font-weight: 400;
+        height: 24px;
+        color: #212529;
+        text-align: center;
+        background-color: #e9ecef;
+        border-radius: 0.375rem 0 0 0.375rem;
+      }
+      .dropdown {
+        display: flex;
+        border-bottom: 1px solid lightgray;
+        width: 604px;
+        margin-bottom: 30px;
+      }
+      .line{
+        height: .1px;
+        border-bottom: 1px solid lightgray;
+        width: 604px;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+
+      }
+      button{
+        width: 604px;
+        border-radius: 0.5rem;
+        font-size: 1.25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #0d6efd;
+        color: white;
+        border-color: #0d6efd;
+        height: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="top">
+          <img
+            src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg"
+            alt=""
+            style="width: 72px; height: 57px; margin-bottom: 24px"
+          />
+          <h2>Checkout form</h2>
+          <p style="text-align: center">
+            Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a
+            validation state that can be triggered by attempting to submit the form without completing it.
+          </p>
+        </div>
+        <div class="rightContainer">
+          <h4>Billing address</h4>
+          <div class="nameContainer">
+            <div class="formBox">
+              <div class="labeltext">First name</div>
+              <input type="text" />
+            </div>
+            <div class="formBox">
+              <div class="labeltext">Last name</div>
+              <input type="text" />
+            </div>
+          </div>
+          <div class="labeltext">username</div>
+          <div style="display: flex">
+            <span class="UserNameSpan">@</span>
+            <input
+              type="text"
+              placeholder="Username"
+              class="longInput"
+              style="width: 540px; border-radius: 0 0.375rem 0.375rem 0"
+            />
+          </div>
+          <div class="labeltext">Email <span>(Optional)</span></div>
+          <input type="text" placeholder="you@example.com" class="longInput" />
+          <div class="labeltext">Address</div>
+          <input type="text" placeholder="1234 main street" class="longInput" />
+          <div class="labeltext">Address 2<spen>(Optional)</spen></div>
+          <input type="text" placeholder="apartment or suite" class="longInput" />
+          <div class="dropdown">
+            <div class="formBox">
+              <div class="labeltext">country</div>
+              <select name="" id="country" required class="longInput" style="padding: 6px 36px 6px 12px; width: 220px">
+                <option value="">choose..</option>
+                <option value="">United State</option>
+                <option value="">Korea</option>
+                <option value="">Canada</option>
+              </select>
+            </div>
+            <div class="formBox">
+              <div class="labeltext">state</div>
+              <select name="" id="state" class="longInput" style="padding: 6px 36px 6px 12px; width: 170px">
+                <option value="">Choose..</option>
+                <option value="">California</option>
+                <option value="">seoul</option>
+              </select>
+            </div>
+            <div class="formBox">
+              <div class="labeltext">zip</div>
+              <textarea name="" id="" class="longInput" style="padding: 6px 36px 6px 12px; width: 133px"></textarea>
+            </div>
+          </div>
+
+          <div >
+            <input type="checkbox" id="same_address" />
+            <label for="same_address">Shipping address is the same as my billing address</label>
+          </div>
+          <div>
+            <input type="checkbox" id="same_address" />
+            <label for="same_address">Save this information for next time</label>
+          </div>
+
+          <div class="line"></div>
+
+          <h4>Payment</h4>
+          <div>
+            <input type="radio" id="credit" name="paymentMethod" />
+            <label for="" class="labeltext">credit card</label>
+          </div>
+          <div>
+            <input type="radio" id="credit" name="paymentMethod" />
+            <label for="">dedit card </label>
+          </div>
+          <div>
+            <input type="radio" id="credit" name="paymentMethod" />
+            <label for="">paypal</label>
+          </div>
+          <div class="nameContainer" style="margin-top: 20px;">
+            <div class="formBox">
+              <div class="labeltext">Name on card</div>
+              <input type="text" />
+            </div>
+            <div class="formBox">
+              <div class="labeltext">Credit card number</div>
+              <input type="text" />
+            </div>
+            </div>
+            <div style="display: flex; margin-top: 20px;">
+                <div class="formBox">
+            <div>expiration</div>
+            <input type="date" class="longInput" style="width: 150px;"/>
+        </div><div class="formBox">
+            <div>CVV</div>
+            <input type="text" class="longInput" style="width: 150px;"/>
+        </div>
+        </div>
+        <div class="line"></div>
+            <button>continue to check</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

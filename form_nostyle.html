@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img
+        src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg"
+        alt=""
+        style="width: 72px; height: 57px"
+      />
+      <h2>Checkout form</h2>
+      <p>
+        Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a
+        validation state that can be triggered by attempting to submit the form without completing it.
+      </p>
+      <div class="rightContainer">
+        <h4>Billing address</h4>
+        <div>first name</div>
+        <input type="text" />
+        <div>last name</div>
+        <input type="text" />
+        <div>username</div>
+        <input type="text" placeholder="Username" />
+        <div>Email <span>(Optional)</span></div>
+        <input type="text" placeholder="you@example.com" />
+        <div>Address</div>
+        <input type="text" placeholder="1234 main street" />
+        <div>Address 2<spen>(Optional)</spen></div>
+        <input type="text" placeholder="apartment or suite" />
+        <div>country</div>
+        <select name="" id="country" required>
+          <option value="">choose..</option>
+          <option value="">United State</option>
+          <option value="">Korea</option>
+          <option value="">Canada</option>
+        </select>
+        <div>state</div>
+        <select name="" id="state">
+          <option value="">Choose..</option>
+          <option value="">California</option>
+          <option value="">seoul</option>
+        </select>
+        <div>zip</div>
+        <textarea name="" id=""></textarea>
+        <div>
+          <input type="checkbox" id="same_address" />
+          <label for="same_address">Shipping address is the same as my billing address</label>
+        </div>
+        <div>
+          <input type="checkbox" id="same_address" />
+          <label for="same_address">Save this information for next time</label>
+        </div>
+        <h4>Payment</h4>
+        <div>
+            <input type="radio" id="credit"
+            name="paymentMethod">
+            <label for="">credit card</label>
+        </div>
+        <div>
+            <input type="radio" id="credit"
+            name="paymentMethod">
+            <label for="">dedit card
+            </label>
+        </div>
+        <div>
+            <input type="radio" id="credit"
+            name="paymentMethod">
+            <label for="">paypal</label>
+        </div>
+        <div>Name on card</div>
+        <input type="text">
+        <small>Full name as displayed on card</small>
+        <div>credit card number</div>
+        <input type="text">
+        <div>expiration</div>
+        <input type="date">
+        <div>CVV</div>
+        <input type="text">
+        <button>continue to check</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 200px;
+      }
+      #wrapper {
+        height: fit-content;
+        width: fit-content;
+        padding: 40px;
+        background-color: bisque;
+        border-radius: 4px;
+      }
+      h2 {
+        text-align: center;
+      }
+      #add {
+        background-color: lightblue;
+      }
+      #delete {
+        background-color: lightcoral;
+      }
+      button {
+        padding: 10px;
+        border-radius: 10px;
+        margin-left: 5px;
+      }
+      input {
+        padding: 10px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="wrapper">
+        <h2>Dynamic Web page</h2>
+        <input type="text" id="inputText" /><button id="add">추가</button>
+        <button id="delete">삭제</button>
+        <ul id="inputList"></ul>
+      </div>
+    </div>
+    <script>
+      const addButton = document.getElementById("add");
+      addButton.addEventListener("click", () => {
+        addList();
+      });
+
+      const deleteButton = document.getElementById("delete");
+      deleteButton.addEventListener("click", () => {
+        deleteList();
+      });
+
+      function addList() {
+        const inputList = document.getElementById("inputList");
+        const inputText = document.getElementById("inputText");
+        const newLi = document.createElement("li");
+        const newDiv = document.createElement("div");
+
+        newLi.appendChild(newDiv);
+        newDiv.textContent = inputText.value;
+
+        inputList.appendChild(newLi);
+
+        inputText.value = "";
+      }
+
+      function deleteList() {
+        const inputList = document.getElementById("inputList");
+        inputList.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
