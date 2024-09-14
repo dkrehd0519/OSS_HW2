@@ -123,7 +123,6 @@
         const address = document.querySelector('input[placeholder="1234 main street"]');
         const country = document.getElementById("country");
         const state = document.getElementById("state");
-        const zip = document.querySelector('input[placeholder="Zip"]');
         const nameOnCard = document.querySelector('input[placeholder="Name on card"]');
         const cardNumber = document.querySelector('input[placeholder="Credit card number"]');
         const expiration = document.querySelector('input[type="date"]');
@@ -156,13 +155,8 @@
           return false;
         }
         if (!state.value) {
-          alert("상태가 필요합니다");
+          alert("도시가 필요합니다");
           state.focus();
-          return false;
-        }
-        if (!zip.value) {
-          alert("zip 이 필요합니다");
-          zip.focus();
           return false;
         }
         if (!nameOnCard.value) {
