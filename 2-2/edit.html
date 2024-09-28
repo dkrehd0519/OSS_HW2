@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="./my.css" />
+    <style>
+      #sellcontainer {
+        width: 100vw;
+        padding: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: -1;
+      }
+      .box {
+        width: 680px;
+        display: flex;
+        align-items: center;
+      }
+      .addimg {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: lightgray;
+        border-radius: 5px;
+      }
+      #title,
+      #price {
+        padding: 8px 20px;
+        width: 688px;
+        height: 50px;
+        margin-top: 30px;
+        border-radius: 10px;
+        border: 1px solid lightgray;
+      }
+      .inputcontent {
+        height: 220px;
+        padding: 8px 20px;
+        width: 688px;
+        margin-top: 30px;
+        border-radius: 10px;
+        border: 1px solid lightgray;
+      }
+      .productcondition {
+        width: 80px;
+        height: 40px;
+        font-size: 16px;
+        border-radius: 10px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+        margin-right: 20px;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+      }
+      .productcondition.selected {
+        background-color: #0dcc5a;
+        color: white;
+        border: #0dcc5a;
+      }
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        cursor: pointer;
+        margin-top: 30px;
+      }
+      .checkbox-container input {
+        margin-right: 10px;
+      }
+      .checkbox-container input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <img src="https://web.joongna.com/main-web/assets/images/custom-logo.svg" alt="" width="200px" height="30px" />
+      <div class="sell" onclick="document.location.href=`./add.html`"></div>
+    </div>
+    <div id="sellcontainer">
+      <div class="box">
+        <div class="addimg">
+          <img src="./AddBtn.svg" alt="" />
+        </div>
+      </div>
+      <input type="text" class="inputtitle" id="title" placeholder="상품명" />
+      <div class="box">
+        <input type="text" class="inputprice" id="price" placeholder="₩ 판매가격" />
+        <label class="checkbox-container" style="width: 105px">
+          <input type="checkbox" id="freeCheckbox" />
+          무료나눔
+        </label>
+      </div>
+      <textarea
+        class="inputcontent"
+        id="description"
+        placeholder="- 상품명(브랜드)																																																- 구매 시기																																																- 사용 기간																																																- 하자 여부																																																* 실제 촬영한 사진과 함께 상세 정보를 입력해주세요.																																																* 카카오톡 아이디 첨부 시 게시물 삭제 및 이용제재 처리될 수 있어요.																																																 																																																안전하고 건전한 거래환경을 위해 과학기술정보통신부, 한국인터넷진흥원, 중고나라가 함께합니다."
+        maxlength="1000"
+      ></textarea>
+      <div class="box" style="font-size: 16px; color: #6a6a6a; margin-top: 30px">상품상태</div>
+      <div class="box">
+        <div class="productcondition" id="used" onclick="selectCondition('used')">중고</div>
+        <div class="productcondition" id="new" onclick="selectCondition('new')">새상품</div>
+      </div>
+      <div class="box" style="font-size: 16px; color: #6a6a6a; margin-top: 30px">거래방법</div>
+      <div class="box">
+        <label class="checkbox-container">
+          <input type="checkbox" id="delivery" />
+          택배거래
+        </label>
+        <label class="checkbox-container" style="margin-left: 20px">
+          <input type="checkbox" id="direct" />
+          직거래
+        </label>
+      </div>
+      <div style="display: flex">
+        <button
+          class="productcondition"
+          id="registerBtn"
+          style="background-color: orange; color: white; border: orange"
+        >
+          수정 완료
+        </button>
+        <button class="productcondition" id="cancelBtn">취소</button>
+      </div>
+    </div>
+
+    <script>
+      window.onload = function () {
+        selectCondition("used");
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get("title");
+        const price = urlParams.get("price");
+        const imgSrc = urlParams.get("img");
+
+        document.getElementById("title").value = title || "";
+        document.getElementById("price").value = price || "";
+      };
+
+      const priceInput = document.getElementById("price");
+      const freeCheckbox = document.getElementById("freeCheckbox");
+
+      freeCheckbox.addEventListener("change", function () {
+        if (this.checked) {
+          priceInput.disabled = true;
+          priceInput.placeholder = "무료나눔";
+          priceInput.value = "";
+        } else {
+          priceInput.disabled = false;
+          priceInput.placeholder = "₩ 판매가격";
+        }
+      });
+
+      const usedCondition = document.getElementById("used");
+      const newCondition = document.getElementById("new");
+
+      function selectCondition(condition) {
+        if (condition === "used") {
+          usedCondition.classList.add("selected");
+          newCondition.classList.remove("selected");
+        } else {
+          newCondition.classList.add("selected");
+          usedCondition.classList.remove("selected");
+        }
+      }
+
+      document.getElementById("registerBtn").addEventListener("click", function () {
+        const title = document.getElementById("title").value;
+        const price = document.getElementById("price").value;
+        const description = document.getElementById("description").value;
+        const freeChecked = document.getElementById("freeCheckbox").checked;
+        const deliveryChecked = document.getElementById("delivery").checked;
+        const directChecked = document.getElementById("direct").checked;
+
+        if (!title) {
+          alert("상품명을 입력하세요");
+          return;
+        }
+
+        if (!freeChecked && !price) {
+          alert("상품 가격을 입력하세요");
+          return;
+        }
+
+        if (!description) {
+          alert("상품 설명을 입력하세요");
+          return;
+        }
+
+        if (!deliveryChecked && !directChecked) {
+          alert("거래방식을 선택해주세요");
+          return;
+        }
+
+        alert("상품 수정이 완료되었습니다");
+        window.location.href = "index.html";
+      });
+
+      document.getElementById("cancelBtn").addEventListener("click", function () {
+        window.location.href = "index.html";
+      });
+    </script>
+  </body>
+</html>
