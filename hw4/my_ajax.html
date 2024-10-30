@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      #div_BookList {
+        font-family: Arial, sans-serif;
+        margin-top: 10px;
+      }
+
+      .book-item {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 5px;
+      }
+
+      .book-id {
+        width: 50px;
+        text-align: left;
+      }
+
+      .book-name {
+        width: 200px;
+        text-align: left;
+      }
+
+      .book-author {
+        width: 150px;
+        text-align: left;
+      }
+
+      .book-price {
+        width: 100px;
+        text-align: left;
+      }
+
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .input-group {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Book List</h1>
+    <p>페이지를 새로고침 할 때마다 Book List 가 자동으로 불러와집니다.</p>
+    <p>책을 추가하실때는 책의 제목과 작가, 가격을 적은후 "Add Book" button 을 눌러주세요.</p>
+    <p>
+      책의 정보를 수정하시고 싶으실때는 바꾸고 싶은 책의 id 와 변경된 내용을 기입한 후 "Update Book Info" button을
+      눌러주세요.
+    </p>
+    <p>책을 삭제하고 싶으실때는 해당하는 책의 id를 적으시고 "Delete Book" button 을 눌러주세요.</p>
+    <div id="div_BookList"></div>
+
+    <div class="form-container">
+      <div class="input-group">NAME : <input type="text" placeholder="name" id="book_name" /></div>
+      <div class="input-group">AUTHOR : <input type="text" placeholder="author" id="book_author" /></div>
+      <div class="input-group">PRICE : <input type="number" placeholder="price" id="book_price" /></div>
+      <button onclick="postDataToJSONFile()">Add Book</button>
+
+      <div class="input-group">ID : <input type="text" placeholder="id" id="book_id" /></div>
+      <button onclick="updateDataToJSONFile()">Update Book Info</button>
+      <button onclick="deleteDataFromJSONFile()">Delete Book</button>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function getDataFromJSONFile() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3000/book");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send();
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            $("#div_BookList").html("");
+            let book = JSON.parse(xhr.response);
+
+            book.forEach((item) => {
+              $("#div_BookList").append(`
+                <div class="book-item">
+                  <span class="book-id">${item.id}</span>
+                  <span class="book-name">${item.name}</span>
+                  <span class="book-author">${item.author}</span>
+                  <span class="book-price">${item.price}</span>
+                </div>
+              `);
+            });
+          }
+        };
+      }
+
+      function postDataToJSONFile() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/book");
+        xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
+
+        let data = {
+          name: $("#book_name").val(),
+          author: $("#book_author").val(),
+          price: $("#book_price").val(),
+        };
+
+        xhr.send(JSON.stringify(data));
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            alert("책 리스트가 추가되었습니다.");
+          }
+        };
+      }
+
+      function updateDataToJSONFile() {
+        let id = $("#book_id").val();
+        const xhr = new XMLHttpRequest();
+        xhr.open("PUT", "http://localhost:3000/book/" + id);
+        xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
+
+        let data = {
+          name: $("#book_name").val(),
+          author: $("#book_author").val(),
+          price: $("#book_price").val(),
+        };
+
+        xhr.send(JSON.stringify(data));
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            alert("책의 정보가 수정되었습니다.");
+          }
+        };
+      }
+
+      function deleteDataFromJSONFile() {
+        let id = $("#book_id").val();
+        const xhr = new XMLHttpRequest();
+        xhr.open("DELETE", "http://localhost:3000/book/" + id);
+
+        xhr.send();
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            alert("책이 삭제되었습니다.");
+          }
+        };
+      }
+      window.onload = getDataFromJSONFile();
+    </script>
+  </body>
+</html>

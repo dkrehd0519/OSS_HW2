@@ -1,0 +1,64 @@
+{
+  "book": [
+    {
+      "id": "1",
+      "name": "Courage to Be Hated",
+      "author": "Ichiro Kashimi",
+      "price": 15000
+    },
+    {
+      "id": "2",
+      "name": "Atomic Habits",
+      "author": "James Clear",
+      "price": 18000
+    },
+    {
+      "id": "3",
+      "name": "The Power of Now",
+      "author": "Eckhart Tolle",
+      "price": 17000
+    },
+    {
+      "id": "4",
+      "name": "Educated",
+      "author": "Tara Westover",
+      "price": 20000
+    },
+    {
+      "id": "5",
+      "name": "Deep Work",
+      "author": "Cal Newport",
+      "price": 16000
+    },
+    {
+      "id": "6",
+      "name": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "price": 22000
+    },
+    {
+      "id": "7",
+      "name": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "price": 25000
+    },
+    {
+      "id": "8",
+      "name": "The Subtle Art of Not Giving a F*ck",
+      "author": "Mark Manson",
+      "price": 14000
+    },
+    {
+      "id": "9",
+      "name": "12 Rules for Life",
+      "author": "Jordan B. Peterson",
+      "price": 21000
+    },
+    {
+      "id": "10",
+      "name": "Man's Search for Meaning",
+      "author": "Viktor E. Frankl",
+      "price": 19000
+    }
+  ]
+}
